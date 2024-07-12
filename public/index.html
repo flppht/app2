@@ -39,5 +39,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      (function () {
+        function loadWidget(clientId) {
+          var script = document.createElement("script");
+          var divWidget = document.createElement("div");
+          divWidget.id = "widget";
+          script.src =
+            "https://main--widgetflp.netlify.app/static/js/widget.js";
+          script.async = true;
+          script.type = "text/javascript";
+          script.dataset.clientId = clientId;
+          document.getElementById("root").appendChild(divWidget);
+          document.body.appendChild(script);
+        }
+        function onLoad() {
+          var clientId = "1";
+          loadWidget(clientId);
+        }
+        if (window.attachEvent) {
+          window.attachEvent("onload", onLoad);
+        } else {
+          window.addEventListener("load", onLoad, false);
+        }
+      })();
+    </script>
   </body>
 </html>
